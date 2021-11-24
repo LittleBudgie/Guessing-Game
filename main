@@ -1,0 +1,25 @@
+import java.util.Scanner;
+import java.util.Random;
+public class Guess {
+    public static void main (String args[]) {
+        Scanner scan = new Scanner(System.in);
+        Random rand = new Random();
+        
+        System.out.println("Hi  there, welcome to my guessing game!\nGuess the number I'm thinking of.");
+        int guessedNumber = scan.nextInt();
+        int actualNumber =  rand.nextInt(101);
+
+        while (guessedNumber != actualNumber)  {
+            if (guessedNumber <  actualNumber)  {
+                System.out.println("Too low try again!");
+                guessedNumber = scan.nextInt();
+            }
+            if (guessedNumber > actualNumber) {
+                System.out.println("Too high  try again!");
+                guessedNumber = scan.nextInt();
+            }
+        }
+        
+        System.out.println("You got it, good job!");
+    }
+}
