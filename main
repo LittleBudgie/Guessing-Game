@@ -5,21 +5,35 @@ public class Guess {
         Scanner scan = new Scanner(System.in);
         Random rand = new Random();
         
-        System.out.println("Hi  there, welcome to my guessing game!\nGuess the number I'm thinking of.");
+        System.out.println("Hi  there, welcome to my guessing game!\nGuess the number I'm thinking of between 0-100.");
         int guessedNumber = scan.nextInt();
         int actualNumber =  rand.nextInt(101);
-
-        while (guessedNumber != actualNumber)  {
-            if (guessedNumber <  actualNumber)  {
+        int tracker = 1;
+        while  (tracker == 1){
+            while (guessedNumber != actualNumber)  {
+                if (guessedNumber <  actualNumber)  {
                 System.out.println("Too low try again!");
                 guessedNumber = scan.nextInt();
-            }
-            if (guessedNumber > actualNumber) {
+                }
+                if (guessedNumber > actualNumber) {
                 System.out.println("Too high  try again!");
                 guessedNumber = scan.nextInt();
+                }
+            }
+            System.out.println("You got it, good job!\nDo you want to play again?");
+            String answer = scan.nextLine(); 
+            answer = scan.nextLine();
+            if (answer.equals("Yes")){
+                System.out.println("Okay restarting...\nGot it! Guess my number.");
+                actualNumber = rand.nextInt(101);
+                tracker = 1;
+                guessedNumber = scan.nextInt();
+            }
+            if (answer.equals("No")) {
+                System.out.println("Okay see you next time!");
+                tracker = 0;
             }
         }
         
-        System.out.println("You got it, good job!");
     }
 }
